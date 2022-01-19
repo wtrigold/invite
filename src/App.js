@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import './App.css'
+import Modal from './modal'
 
-function App() {
+function App () {
+  const [visible, setVisible] = useState(false)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <section className='top-bottom absolute'>
+      <article>
+        <header className='top'>
+          {' '}
+          <span
+            onClick={() => {
+              window.location.reload()
+            }}
+          >
+            BROCCOLI & CO.
+          </span>
+        </header>
+        <div className='middle'>
+          <p className='line-1'>A better way</p>
+          <p className='line-2'>to enjoy every day.</p>
+          <p className='line-3'>Be the first to know when we launch.</p>
+          <div
+            className='button'
+            onClick={() => {
+              setVisible(true)
+            }}
+          >
+            Request an invite
+          </div>
+          {visible ? <Modal setVisible={setVisible} /> : null}
+        </div>
+        <footer className='bottom'>
+          <p className='line-1'>Made with ❤ in Melbourne.</p>
+          <p className='line-2'>© 2016 Broccoli & Co. All rights reserved.</p>
+        </footer>
+      </article>
+    </section>
+  )
 }
 
-export default App;
+export default App
